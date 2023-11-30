@@ -3,7 +3,11 @@ from cvzone.HandTrackingModule import HandDetector
 from cvzone.ClassificationModule import Classifier
 import numpy as np
 import math
+import pyttsx3
 import time
+
+# Initialize the text-to-speech engine
+engine = pyttsx3.init()
 
 cap = cv2.VideoCapture(0)
 detector = HandDetector(maxHands=1)
@@ -53,10 +57,26 @@ while True:
 
         cv2.rectangle(imgOutput, (x - offset, y - offset - 50), (x - offset + 420, y - offset - 50 + 50), (256, 256, 256), cv2.FILLED)
         cv2.putText(imgOutput, labels[index], (x, y - 26), cv2.FONT_HERSHEY_COMPLEX, 1.7, (0, 0, 0), 4)
+
+        # Speak the recognized label
+        engine.say(labels[index])
+        engine.runAndWait()
+
         cv2.rectangle(imgOutput, (x - offset, y - offset), (x + w + offset, y + h + offset), (256, 256, 256), 4)
 
         cv2.imshow("ImageCrop", imgCrop)
         cv2.imshow("ImageWhite", imgWhite)
 
     cv2.imshow("Image", imgOutput)
-    cv2.waitKey(1)
+    key = cv2.waitKey(1)
+    if key == ord("s"):
+        counter += 1
+        cv2.imwrite(f'{folder}/Image_{time.time()}.jpg', imgWhite)
+        print(counter)
+
+    if key == 27:  # Press 'Esc' key to exit the loop
+        break
+
+# Release the video capture object and close all windows
+cap.release()
+cv2.destroyAllWindows()
