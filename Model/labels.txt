@@ -1,5 +1,14 @@
-0 Best of Luck
-1 Cool
-2 Fist Bump
-3 Heart
-4 Hello
+0 Best of luck
+1 Angry
+2 Christmas
+3 Cool
+4 Disciple
+5 Fist Bump
+6 Heart
+7 Hello
+8 House
+9 I(Me)
+10 Narrow
+11 Really
+12 Something
+13 Son

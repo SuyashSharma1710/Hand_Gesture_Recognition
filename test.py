@@ -19,8 +19,22 @@ imgSize = 300
 folder = "data/Best of Luck"
 counter = 0
 
-labels = ["Best of Luck", "Cool", "Fist Bump", "Heart", "Hello"]
-
+labels = [
+    "Angry",
+    "Christmas",
+    "Cool",
+    "Disciple",
+    "Fist Bump",
+    "Heart",
+    "Hello",
+    "House",
+    "I(Me)",
+    "Narrow",
+    "Really",
+    "Something",
+    "Son",
+    "Best of luck"
+]
 while True:
     success, img = cap.read()
     imgOutput = img.copy()
